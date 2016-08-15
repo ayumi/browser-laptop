@@ -74,6 +74,10 @@ class Frame extends ImmutableComponent {
     return aboutUrls.get(getBaseUrl(this.props.location))
   }
 
+  isInitialBlankNavigation () {
+    return this.webview.isInitialBlankNavigation()
+  }
+
   updateAboutDetails () {
     let location = getBaseUrl(this.props.location)
     if (location === 'about:preferences') {
@@ -756,6 +760,7 @@ class Frame extends ImmutableComponent {
       loadStart(e)
     })
     this.webview.addEventListener('load-start', (e) => {
+      windowActions.setFrameWasInitialBlankNavigation(this.frame, this.isInitialBlankNavigation())
       // XXX: loadstart probably does not need to be called twice anymore.
       loadStart(e)
     })

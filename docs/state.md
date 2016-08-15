@@ -211,6 +211,7 @@ WindowStore
     loading: boolean,
     themeColor: string, // css compatible color string
     computedThemeColor: string, // css computed theme color from the favicon
+    wasInitialBlankNavigation: boolean, // records the value of isInitialBlankNavigation from the previous navigation
     isFullScreen: boolean, // true if the frame should be shown as full screen
     showFullScreenWarning: boolean, // true if a warning should be shown about full screen
     startLoadTime: datetime,

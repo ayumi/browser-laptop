@@ -158,8 +158,9 @@ module.exports.cleanPerWindowData = (perWindowData) => {
     // Do not show the audio indicator until audio starts playing
     delete frame.audioMuted
     delete frame.audioPlaybackActive
-    // Let's not assume wknow anything about loading
+    // Let's not assume we know anything about loading
     delete frame.loading
+    delete frame.wasInitialBlankNavigation
     // Always re-determine the security data
     delete frame.security
     // Value is only used for local storage

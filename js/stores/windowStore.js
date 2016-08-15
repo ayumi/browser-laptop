@@ -331,7 +331,7 @@ const doAction = (action) => {
 
       // Update nav bar unless when spawning a new tab. The user might have
       // typed in the URL bar while we were navigating -- we should preserve it.
-      if (!(action.location === 'about:newtab' && !FrameStateUtil.getActiveFrame(windowState).get('canGoForward'))) {
+      if (FrameStateUtil.getActiveFrame(windowState).get('wasInitialBlankNavigation') === false) {
         updateNavBarInput(action.location, frameStatePath(key))
       }
       break
@@ -358,6 +358,14 @@ const doAction = (action) => {
           previousLocation,
           frameKey
         }, action.errorDetails)
+      })
+      break
+    case WindowConstants.WINDOW_SET_FRAME_WAS_INITIAL_BLANK_NAVIGATION:
+      windowState = windowState.mergeIn(['frames', FrameStateUtil.getFramePropsIndex(windowState.get('frames'), action.frameProps)], {
+        wasInitialBlankNavigation: action.wasInitialBlankNavigation
+      })
+      windowState = windowState.mergeIn(['tabs', FrameStateUtil.getFramePropsIndex(windowState.get('frames'), action.frameProps)], {
+        wasInitialBlankNavigation: action.wasInitialBlankNavigation
       })
       break
     case WindowConstants.WINDOW_SET_FRAME_TITLE:

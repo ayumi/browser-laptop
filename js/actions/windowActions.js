@@ -138,6 +138,21 @@ const windowActions = {
   },
 
   /**
+   * Dispatches a message to the store to set the current frame's wasInitialBlankNavigation.
+   * Called webview event load-start.
+   *
+   * @param {Object} frameProps - The frame properties
+   * @param {boolean} wasInitialBlankNavigation
+   */
+  setFrameWasInitialBlankNavigation: function (frameProps, wasInitialBlankNavigation) {
+    dispatch({
+      actionType: WindowConstants.WINDOW_SET_FRAME_WAS_INITIAL_BLANK_NAVIGATION,
+      frameProps,
+      wasInitialBlankNavigation
+    })
+  },
+
+  /**
    * Dispatches a message to set the login required detail.
    * @param {Object} frameProps - The frame where the login required prompt should be shown.
    * @param {Object} detail - Details of the login required operation.

@@ -88,7 +88,19 @@ Dispatches a message to set the frame error state
 
 
 
-### setLoginRequiredDetail(frameProps, detail) 
+### setFrameWasInitialBlankNavigation(frameProps, wasInitialBlankNavigation)
+
+Dispatches a message to the store to set the current frame's wasInitialBlankNavigation, the value of isInitialBlankNavigation from the previous navigation.
+
+**Parameters**
+
+**frameProps**: `Object`, The frame properties
+
+**wasInitialBlankNavigation**: `boolean`, Dispatches a message to the store to set the current frame's wasInitialBlankNavigation.
+
+
+
+### setLoginRequiredDetail(frameProps, detail)
 
 Dispatches a message to set the login required detail.
 
